@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Header from './components/Header'
+import NotFound from './components/NotFound'
+import Search from './components/Search'
+import Ability from './pages/Ability'
+import Home from './pages/Home'
+import Pokemon from './pages/Pokemon'
+import Type from './pages/Type'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <BrowserRouter>
+      <Header />
+      <Search />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="pokemon/:pokemon" element={<Pokemon />} />
+        <Route path="type/:type" element={<Type />} />
+        <Route path="ability/:ability" element={<Ability />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  </>
+)
 
-export default App;
+export default App
