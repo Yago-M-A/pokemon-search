@@ -47,18 +47,23 @@ const Pokemon = () => {
       return
     }
     fetch()
+    return
   }, [navigate, pokemon]) //navigate, pokemon, abilities
   return (
     <>
-      <S.Wrapper>
-        {loading ? (
+      {loading ? (
+        <S.Wrapper>
           <S.Loading />
-        ) : (
-          <CardPokemon name={objPokemon.name} img={objPokemon.img} />
-        )}
-      </S.Wrapper>
-      {loading ? <S.Loading /> : <Abilities abilities={abilities} />}
-      {loading ? <S.Loading /> : <Stats stats={stats} />}
+        </S.Wrapper>
+      ) : (
+        <>
+          <S.Wrapper>
+            <CardPokemon name={objPokemon.name} img={objPokemon.img} />
+          </S.Wrapper>
+          <Abilities abilities={abilities} />
+          <Stats stats={stats} />
+        </>
+      )}
     </>
   )
 }

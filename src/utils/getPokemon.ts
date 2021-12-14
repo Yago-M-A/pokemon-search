@@ -83,7 +83,7 @@ export const getStats = async (pokemon: string) => {
     console.log(arrayStats, 'stats')
     return arrayStats
   } catch (err) {
-    return null
+    return
   }
 }
 
