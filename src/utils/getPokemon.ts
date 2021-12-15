@@ -41,16 +41,19 @@ export const getAbilities = async (pokemon: string) => {
     const arrayAbilities: arrayAbilitiesProps[] = []
     const { data } = await db.get(`pokemon/${pokemon}`)
     const abilities = data.abilities.map((item: itensProps) => item.ability)
-    abilities.forEach(async (ability: abilityProps) => {
-      const name = ability.name
-      const abilityDetails = await db.get(`ability/${name}`)
-      const effects = abilityDetails.data.effect_entries
-      effects.forEach((efeito: effectProps) => {
-        if (efeito.language.name === 'en') {
-          arrayAbilities.push({ name, effect: efeito.effect })
-        }
+    console.log(abilities, 'habilidade')
+    await Promise.all(
+      abilities.map(async (ability: abilityProps) => {
+        const name = ability.name
+        const abilityDetails = await db.get(`ability/${name}`)
+        const effects = abilityDetails.data.effect_entries
+        effects.map((efeito: effectProps) => {
+          if (efeito.language.name === 'en') {
+            arrayAbilities.push({ name, effect: efeito.effect })
+          }
+        })
       })
-    })
+    )
     console.log(arrayAbilities, 'array')
     return arrayAbilities
   } catch (err) {
