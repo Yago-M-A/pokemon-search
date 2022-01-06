@@ -4,6 +4,8 @@
 Projeto desenvolvido com Typescript e ReactJS, com a proposta de ser uma aplicação de busca de Pokémons pelas opções de habilidades, tipos ou o próprio nome do Pokémon.
 Realização da busca é feita através do consumo de uma api chamada [Pokeapi](https://pokeapi.co) e dentro do projeto também se encontra alguns testes unitários dos componentes.
 
+<img src='https://github.com/Yago-M-A/pokemon-search/blob/master/public/readme/Screenshot_803.png' width='100%'><img src='https://github.com/Yago-M-A/pokemon-search/blob/master/public/readme/Screenshot_804.png' width='31%'><img src='https://github.com/Yago-M-A/pokemon-search/blob/master/public/readme/Screenshot_805.png' width='31%'><img src='https://github.com/Yago-M-A/pokemon-search/blob/master/public/readme/Screenshot_806.png' width='31%'><img src='https://github.com/Yago-M-A/pokemon-search/blob/master/public/readme/Screenshot_807.png' width='100%'>
+
 ## Libraries
 
 `Cliente HTTP`
