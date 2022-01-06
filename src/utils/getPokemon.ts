@@ -1,5 +1,9 @@
 import { db } from './db'
 
+export const firstUp = (name: string) => {
+  return name[0].toUpperCase() + name.substring(1)
+}
+
 type itensProps = {
   ability: { name: string; url: string }
   is_hidden: boolean
@@ -24,7 +28,8 @@ type effectProps = {
 export const getPokemon = async (pokemon: string) => {
   try {
     const { data } = await db.get(`pokemon/${pokemon}`)
-    const name: string = data.forms[0].name
+    const nameLow: string = data.forms[0].name
+    const name = firstUp(nameLow)
     const id = data.id
     const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${String(
       id
@@ -44,11 +49,12 @@ export const getAbilities = async (pokemon: string) => {
     console.log(abilities, 'habilidade')
     await Promise.all(
       abilities.map(async (ability: abilityProps) => {
-        const name = ability.name
-        const abilityDetails = await db.get(`ability/${name}`)
+        const nameLow = ability.name
+        const abilityDetails = await db.get(`ability/${nameLow}`)
         const effects = abilityDetails.data.effect_entries
         effects.map((efeito: effectProps) => {
           if (efeito.language.name === 'en') {
+            const name = firstUp(nameLow)
             arrayAbilities.push({ name, effect: efeito.effect })
           }
         })

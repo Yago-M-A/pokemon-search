@@ -18,7 +18,7 @@ const Input = ({ label, name, onHandleInput, initialstate }: InputProps) => {
   }
   return (
     <S.InputWrapper>
-      <Search />
+      <Search aria-label="Icon de pesquisa" />
       <input
         type="text"
         aria-label={label}

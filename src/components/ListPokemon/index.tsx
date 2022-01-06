@@ -14,7 +14,7 @@ const ListPokemon = ({ name, url }: ListPokemonProps) => {
   return (
     <S.Wrapper>
       <h2>{name}</h2>
-      <ArrowRightCircle onClick={() => handleClick()} />
+      <ArrowRightCircle onClick={() => handleClick()} aria-label="Icon" />
     </S.Wrapper>
   )
 }

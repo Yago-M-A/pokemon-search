@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import * as S from './styles'
 
 type RadiosProps = {
@@ -16,10 +16,7 @@ const Radios = ({
   values
 }: RadiosProps) => {
   const [valueRadio] = useState(value)
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
-    onHandleRadios(valueRadio)
-  }
+
   return (
     <S.Wrapper>
       <input
@@ -27,7 +24,7 @@ const Radios = ({
         value={value}
         type="radio"
         checked={values.radios === valueRadio}
-        onChange={onValueChange}
+        onChange={() => onHandleRadios(valueRadio)}
       />
       <label>{label}</label>
     </S.Wrapper>

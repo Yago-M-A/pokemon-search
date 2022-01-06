@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import slugify from 'slugify'
 import Input from '../Input'
 import Radios from '../Radios'
 import * as S from './styles'
@@ -19,9 +20,11 @@ const Search = () => {
       return
     }
     const searchLowCase = search.toLowerCase()
+    const slugifyText = slugify(searchLowCase)
+    console.log(slugifyText)
     setIsError(false)
     setValues({ ...values, radios: '' })
-    navigate(`${radios}/${searchLowCase}`)
+    navigate(`${radios}/${slugifyText}`)
   }
   return (
     <S.Wrapper>
@@ -33,21 +36,21 @@ const Search = () => {
             label="Ability"
             name="Ability"
             value="ability"
-            onHandleRadios={(v) => handleSearch('radios', v)}
+            onHandleRadios={() => handleSearch('radios', 'ability')}
           />
           <Radios
             values={values}
             label="Type"
             name="Type"
             value="type"
-            onHandleRadios={(v) => handleSearch('radios', v)}
+            onHandleRadios={() => handleSearch('radios', 'type')}
           />
           <Radios
             values={values}
             label="Pokémon"
             name="Pokémon"
             value="pokemon"
-            onHandleRadios={(v) => handleSearch('radios', v)}
+            onHandleRadios={() => handleSearch('radios', 'pokemon')}
           />
         </S.divRadios>
         <S.divInput>
